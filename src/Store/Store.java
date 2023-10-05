@@ -65,7 +65,8 @@ public class Store {
                 ", productType='" + productType + '\'' +
                 '}' + "\n";
     }
-    public String getData(){
-        return "ID: "+id + ",Tên sp: " + name + ", Số lượng: " + quantity + ", Giá: " + price + ", Loại hàng: " + productType;
+
+    public String getData() {
+        return id + "," + name + "," + quantity + "," + price + "," + productType + "\n";
     }
 }

@@ -4,13 +4,14 @@ import Store.Store;
 import readAnd.RWStudent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Manager implements IManager<Store> {
-    private ArrayList<Store> list;
+    private List<Store> list;
     private RWStudent rwStudent = new RWStudent();
 
     public Manager() {
-        this.list = new ArrayList<>();
+        this.list = rwStudent.readFile();
     }
 
     @Override
@@ -38,15 +39,26 @@ public class Manager implements IManager<Store> {
     }
 
     @Override
-    public ArrayList<Store> findAll() {
+    public List<Store> findAll() {
         return list;
     }
 
     @Override
-    public ArrayList<Store> searchName(String name) {
-        ArrayList<Store> stores = new ArrayList<>();
+    public List<Store> searchName(String name) {
+        List<Store> stores = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
+                stores.add(list.get(i));
+            }
+        }
+        return stores;
+    }
+
+    @Override
+    public List<Store> searchProductType(String name) {
+        List<Store> stores = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getProductType().toLowerCase().contains(name.toLowerCase())) {
                 stores.add(list.get(i));
             }
         }

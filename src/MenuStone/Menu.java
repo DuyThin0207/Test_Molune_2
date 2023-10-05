@@ -6,6 +6,7 @@ import input.Input;
 import valiDate.ValiDateStore;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -62,11 +63,11 @@ public class Menu {
         System.out.println("Nhập ID:");
         int id = ValiDateStore.inputId();
         System.out.println("Nhập tên sản phẩm:");
-        String name = inputStr.nextLine();
+        String name = ValiDateStore.inputName();
         System.out.println("Nhập số lượng:");
-        int quantity = inputNumber();
+        int quantity = ValiDateStore.inputQuantity();
         System.out.println("Nhập giá:");
-        int price = inputNumber();
+        int price = ValiDateStore.inputPrice();
         System.out.println("Nhập loại sản phẩm:");
         String product = inputStr.nextLine();
         Store store = new Store(id, name, quantity, price, product);
@@ -80,11 +81,11 @@ public class Menu {
         System.out.println("Nhập ID:");
         int id = ValiDateStore.inputId();
         System.out.println("Nhập tên sản phẩm:");
-        String name = inputStr.nextLine();
+        String name = ValiDateStore.inputName();
         System.out.println("Nhập số lượng:");
-        int quantity = inputNumber();
+        int quantity = ValiDateStore.inputQuantity();
         System.out.println("Nhập giá:");
-        int price = inputNumber();
+        int price = ValiDateStore.inputPrice();
         System.out.println("Nhập loại sản phẩm:");
         String product = inputStr.nextLine();
         try {
@@ -116,7 +117,7 @@ public class Menu {
     public void showName() {
         System.out.println("Nhập tên mặt hàng muốn tìm:");
         String checkName = inputStr.nextLine();
-        ArrayList<Store> arr = manager.searchName(checkName);
+        List<Store> arr = manager.searchName(checkName);
         for (int i = 0; i < arr.size(); i++) {
             System.out.println(arr.get(i));
         }
@@ -125,7 +126,7 @@ public class Menu {
     public void showName2() {
         System.out.println("Nhập loại mặt hàng muốn tìm:");
         String checkName = inputStr.nextLine();
-        ArrayList<Store> arr = manager.searchName(checkName);
+        List<Store> arr = manager.searchProductType(checkName);
         for (int i = 0; i < arr.size(); i++) {
             System.out.println(arr.get(i));
         }

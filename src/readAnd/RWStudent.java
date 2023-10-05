@@ -6,8 +6,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class RWStudent {
+    public static Scanner input = new Scanner(System.in);
     private File file = new File("products.csv");
     public void writeFile(List<Store> students){
         try{
@@ -32,12 +34,13 @@ public class RWStudent {
             String line;
             while ((line = bufferedReader.readLine()) != null){
                 String[] data = line.split(",");
-//                String[] points = data[2].split(";");
-                System.out.println(Arrays.toString(data));
-//                Student student = new Student(Integer.parseInt(data[0]), data[1], Double.parseDouble(points[0]));
+               Store store = new Store(Integer.parseInt(data[0]),data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4]);
+                students.add(store);
             }
+            bufferedReader.close();
+
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return students;
     }
