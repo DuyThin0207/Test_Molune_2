@@ -1,14 +1,14 @@
 package Manager;
 
 import Store.Store;
-import readAnd.RWStudent;
+import readAnd.RWStore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Manager implements IManager<Store> {
     private List<Store> list;
-    private RWStudent rwStudent = new RWStudent();
+    private RWStore rwStudent = new RWStore();
 
     public Manager() {
         this.list = rwStudent.readFile();
@@ -67,7 +67,6 @@ public class Manager implements IManager<Store> {
 
     @Override
     public Store searchId(int id) {
-        int index = findIndexById(id);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
                 return list.get(i);

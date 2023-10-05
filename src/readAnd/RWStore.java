@@ -4,11 +4,10 @@ import Store.Store;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class RWStudent {
+public class RWStore {
     public static Scanner input = new Scanner(System.in);
     private File file = new File("products.csv");
     public void writeFile(List<Store> students){
@@ -16,8 +15,8 @@ public class RWStudent {
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String line = "";
-            for (Store student:students) {
-                line += student.getData();
+            for (Store store:students) {
+                line += store.getData();
             }
             bufferedWriter.write(line);
             bufferedWriter.close();
@@ -27,7 +26,7 @@ public class RWStudent {
     }
 
     public List<Store> readFile() {
-        List<Store> students = new ArrayList<>();
+        List<Store> stores = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -35,13 +34,13 @@ public class RWStudent {
             while ((line = bufferedReader.readLine()) != null){
                 String[] data = line.split(",");
                Store store = new Store(Integer.parseInt(data[0]),data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4]);
-                students.add(store);
+                stores.add(store);
             }
             bufferedReader.close();
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        return students;
+        return stores;
     }
 }

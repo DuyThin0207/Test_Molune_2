@@ -1,16 +1,13 @@
 package Main;
 
 import MenuStone.Menu;
-import Store.Store;
-import readAnd.RWStudent;
-
-import java.io.FileNotFoundException;
+import readAnd.RWStore;
 
 public class Main {
     public static void main(String[] args) {
 
         Menu menu = new Menu();
-        RWStudent rw = new RWStudent();
+        RWStore rw = new RWStore();
         rw.readFile();
         menu.showMenuStudent();
 
